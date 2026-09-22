@@ -209,14 +209,12 @@ h3 {
   outline-offset: 2px;
 }
 
-/* kill leftover animation classes if used */
-.stagger-item,
-.rise,
-.rise-delay-1,
-.rise-delay-2,
-.rise-delay-3 {
-  animation: none;
-  opacity: 1;
-  filter: none;
-  transform: none;
+/* Hide Netlify "Powered by" badge if injected */
+a[href*="netlify.com"][target="_blank"]:has(svg),
+a[aria-label*="Netlify" i],
+[data-netlify-badge],
+#netlify-badge,
+.netlify-badge,
+iframe[src*="netlify"][title*="Netlify" i] {
+  display: none !important;
 }
