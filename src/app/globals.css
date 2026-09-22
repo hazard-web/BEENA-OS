@@ -1,26 +1,222 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #1a1f16;
+  --slate: #5c6658;
+  --mist: #f3f4f0;
+  --paper: #eceee8;
+  --line: #d8dcd4;
+  --green: #3d4a2e;
+  --green-mid: #556b2f;
+  --green-soft: #e8ede0;
+  --amber: #9a6700;
+  --rose: #b42318;
+  --sage: #3f6b3a;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --radius: 12px;
+  --radius-sm: 8px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-green-mid: var(--green-mid);
+  --color-green-soft: var(--green-soft);
+  --color-teal: var(--green-mid);
+  --color-teal-deep: var(--green);
+  --color-amber: var(--amber);
+  --color-rose: var(--rose);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-body), Inter, system-ui, sans-serif;
+  --font-display: var(--font-body), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-body), Inter, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11" 1, "ss01" 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.font-display,
+h1,
+h2,
+h3 {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.font-mono {
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.inset {
+  background: #fff;
+}
+
+.control {
+  border-radius: var(--radius-sm);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--green-mid);
+  color: #fff;
+  padding: 0.85rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.panel-head-meta {
+  font-weight: 500;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.table-head {
+  background: var(--green-soft);
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.table-head th {
+  padding: 0.65rem 1.1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-pill::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.status-active {
+  background: #e8f5e4;
+  color: #2f6b3a;
+}
+
+.status-warn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-muted {
+  background: #eef0eb;
+  color: #6b7265;
+}
+
+.tier-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.tier-routine {
+  background: var(--sage);
+}
+
+.tier-complex {
+  background: var(--amber);
+}
+
+.tier-critical {
+  background: var(--rose);
+}
+
+.pressable:active:not(:disabled) {
+  opacity: 0.85;
+}
+
+.nav-item {
+  transition: background-color 80ms ease, color 80ms ease;
+}
+
+.row-hover:hover {
+  background: #f7f8f4;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 2px;
+}
+
+/* kill leftover animation classes if used */
+.stagger-item,
+.rise,
+.rise-delay-1,
+.rise-delay-2,
+.rise-delay-3 {
+  animation: none;
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
