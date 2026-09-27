@@ -1,7 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Markdown (do not push)
+# Docs and markdown (do not push)
 *.md
+*.markdown
+*.docx
+*.doc
+*.pdf
+*.rtf
 
 # dependencies
 /node_modules
