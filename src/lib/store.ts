@@ -6,10 +6,8 @@ import type { StoreData } from "./types";
 const DATA_DIR = path.join(process.cwd(), "data");
 const STORE_PATH = path.join(DATA_DIR, "store.json");
 
-/** Netlify / serverless has a read-only filesystem — keep data in memory. */
+/** Serverless hosts have a read-only filesystem — keep data in memory. */
 const useMemory =
-  process.env.NETLIFY === "true" ||
-  !!process.env.NETLIFY_LOCAL ||
   !!process.env.VERCEL ||
   !!process.env.AWS_LAMBDA_FUNCTION_NAME ||
   process.env.BEENA_STORE === "memory";

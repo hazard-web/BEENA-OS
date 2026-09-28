@@ -208,13 +208,3 @@ h3 {
   outline: 2px solid var(--green-mid);
   outline-offset: 2px;
 }
-
-/* Hide Netlify "Powered by" badge if injected */
-a[href*="netlify.com"][target="_blank"]:has(svg),
-a[aria-label*="Netlify" i],
-[data-netlify-badge],
-#netlify-badge,
-.netlify-badge,
-iframe[src*="netlify"][title*="Netlify" i] {
-  display: none !important;
-}
