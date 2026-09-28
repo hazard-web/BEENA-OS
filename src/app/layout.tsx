@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import { AppShell } from "@/components/AppShell";
-import { readStore } from "@/lib/store";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const body = Inter({
   variable: "--font-body",
@@ -15,22 +17,15 @@ export const metadata: Metadata = {
   description: "Success4Coaches operating system",
 };
 
-export const dynamic = "force-dynamic";
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const store = await readStore();
-  const criticalCount = store.interactions.filter(
-    (i) => i.tier === "critical" && !i.resolved,
-  ).length;
-
   return (
-    <html lang="en" className={`${body.variable} h-full antialiased`}>
+    <html lang="en" className={cn("h-full", "antialiased", body.variable, "font-sans", geist.variable)}>
       <body className="min-h-full font-sans">
-        <AppShell criticalCount={criticalCount}>{children}</AppShell>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

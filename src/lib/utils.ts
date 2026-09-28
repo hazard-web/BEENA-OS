@@ -4,6 +4,8 @@ import type {
   StoreData,
 } from "./types";
 
+export { cn } from "cn";
+
 export function formatINR(n: number): string {
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
